@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
 
-from routes import configure_routes
+from handlers.routes import configure_routes
 
 app = Flask(__name__)
 

@@ -1,4 +1,10 @@
+from click import FileError
+
+
 def main_func(filepath):
+
+    if filepath[-3] != 'txt':
+        raise FileError
 
     line = list()  # contains a single line
     singleElement = list()
