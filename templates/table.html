@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<table style="z-index: 200;">
+  <thead>
+    <tr>
+      <th>Details &rarr;<br />S. No. &darr;</th>
+      <th data-column="id" style="white-space: nowrap;">Task ID</th>
+      <th data-column="name" style="white-space: nowrap;">Task Name</th>
+      <th data-column="duration" style="white-space: nowrap;">Duration</th>
+      <th data-column="duration" style="white-space: nowrap;">Dependencies</th>
+      <th data-column="es" style="white-space: nowrap;">ES</th>
+      <th data-column="ef" style="white-space: nowrap;">EF</th>
+      <th data-column="ls" style="white-space: nowrap;">LS</th>
+      <th data-column="lf" style="white-space: nowrap;">LF</th>
+      <th data-column="float" style="white-space: nowrap;">float</th>
+      <th data-column="critical" style="white-space: nowrap;">isCritical</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%
+    for x in data:
+    %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{data[x]['id']}}</td>
+      <td>{{data[x]['name']}}</td>
+      <td>{{data[x]['duration']}}</td>
+      {% if data[x]['dependencies'][0] == '-1':%}
+      <td>None</td>
+      {% else %}
+      <td>{{', '.join(data[x]['dependencies'])}}</td>
+      {% endif %}
+      <td>{{data[x]['ES']}}</td>
+      <td>{{data[x]['EF']}}</td>
+      <td>{{data[x]['LS']}}</td>
+      <td>{{data[x]['LF']}}</td>
+      <td>{{data[x]['float']}}</td>
+      <td>{{data[x]['isCritical']}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
